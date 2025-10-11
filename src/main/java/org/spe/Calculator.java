@@ -49,6 +49,6 @@ public class Calculator {
     }
 
     public double power(double base, double exponent) {
-        return Math.pow(base, base);
+        return Math.pow(base, exponent);
     }
 }
