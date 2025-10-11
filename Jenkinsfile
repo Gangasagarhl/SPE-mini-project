@@ -1,14 +1,23 @@
 pipeline {
     agent any
 
+    triggers {
+        githubPush()
+    }
+
+    environment {
+        GITHUB_REPO_URL = 'https://github.com/Gangasagarhl/SPE-mini-project.git'
+        DOCKER_IMAGE_NAME = 'calculator'
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/Gangasagarhl/SPE-mini-project.git'
+                git branch: 'main', url: "${GITHUB_REPO_URL}"
             }
         }
 
-        stage('Run Tests') {
+        stage('Test') {
             steps {
                 sh 'mvn test'
             }
@@ -17,6 +26,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean package'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("${DOCKER_IMAGE_NAME}", '.')
+                }
             }
         }
     }

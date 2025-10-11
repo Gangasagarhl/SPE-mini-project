@@ -7,9 +7,10 @@ public class Main {
         int a = 10;
         int b = 5;
 
-        System.out.println("Add: " + calc.add(a, b));
-        System.out.println("Subtract: " + calc.subtract(a, b));
-        System.out.println("Multiply: " + calc.multiply(a, b));
-        System.out.println("Divide: " + calc.divide(a, b));
+        System.out.println("a = " + a + " b = " + b);
+        System.out.println("a + b = " + calc.add(a, b));
+        System.out.println("a - b = " + calc.subtract(a, b));
+        System.out.println("a * b = " + calc.multiply(a, b));
+        System.out.println("a / b = " + calc.divide(a, b));
     }
 }
