@@ -36,5 +36,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Push Docker Images') {
+            steps {
+                script {
+                    docker.withRegistry('', 'dockerhub_credentials') {
+                        sh 'docker tag calculator hlgsagar/calculator:latest'
+                        sh 'docker push hlgsagar/calculator'
+                    }
+                }
+            }
+        }
     }
 }
