@@ -59,4 +59,17 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            mail to: 'hlgsagar.1@gmail.com',
+                subject: "SUCCESS: Pipeline ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                body: "The pipeline ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} was successful.\nCheck the build details at: ${env.BUILD_URL}"
+        }
+        failure {
+            mail to: 'hlgsagar.1@gmail.com',
+                subject: "FAILURE: Pipeline ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                body: "The pipeline ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} has failed.\nCheck the build details at: ${env.BUILD_URL}"
+        }
+    }
 }
