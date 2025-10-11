@@ -39,11 +39,22 @@ pipeline {
 
         stage('Push Docker Images') {
             steps {
-                script {
+                script{
                     docker.withRegistry('', 'dockerhub_credentials') {
-                        sh 'docker tag calculator hlgsagar/calculator:latest'
-                        sh 'docker push hlgsagar/calculator'
+                    sh 'docker tag calculator hlgsagar/calculator:latest'
+                    sh 'docker push hlgsagar/calculator'
                     }
+                 }
+            }
+        }
+
+        stage('Run Ansible Playbook') {
+            steps {
+                script {
+                    ansiblePlaybook(
+                        playbook: 'deploy.yml',
+                        inventory: 'inventory.ini'
+                     )
                 }
             }
         }
