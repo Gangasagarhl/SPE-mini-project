@@ -8,6 +8,7 @@
     <artifactId>SPE-mini-project</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>SPE Mini Project</name>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
