@@ -1,5 +1,6 @@
 # Use OpenJDK 17 Alpine as base image
-FROM openjdk:17-alpine
+# FROM openjdk:17-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 # Install OpenSSH server
 RUN apk add --no-cache openssh \
