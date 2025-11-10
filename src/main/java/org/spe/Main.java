@@ -2,7 +2,7 @@ package org.spe;
 
 import java.util.Scanner;
 
-// test 5
+// test 8
 public class Main {
     public static void main(String[] args) {
         Calculator calc = new Calculator();
